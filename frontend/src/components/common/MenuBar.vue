@@ -7,7 +7,25 @@
 			</v-toolbar-title> -->
 			<v-spacer></v-spacer>
 			<!-- display breakpoint -->
-			<v-app-bar-nav-icon class="hidden-lg-and-up" dark></v-app-bar-nav-icon>
+			<!-- display lg down -->
+			<v-menu rounded offset-y>
+				<template v-slot:activator="{ attrs, on }">
+					<v-app-bar-nav-icon
+						class="hidden-lg-and-up"
+						v-bind="attrs"
+						v-on="on"
+						dark
+					></v-app-bar-nav-icon>
+				</template>
+
+				<v-list>
+					<v-list-item v-for="(item, index) in menu" :key="index" link>
+						<v-list-item-title v-text="item.title"></v-list-item-title>
+					</v-list-item>
+				</v-list>
+			</v-menu>
+
+			<!-- display lg up -->
 			<v-slide-group class="hidden-lg-and-down">
 				<v-slide-item
 					v-for="(item, index) in menu"
@@ -18,9 +36,7 @@
 						id="menu-btn"
 						class="elevation-0 px-5"
 						:input-value="active"
-						:style="
-							active ? 'color: #fbbd28' : 'background-color : transparent'
-						"
+						:style="active ? 'color: #fbbd28' : undefined"
 						@click="toggle"
 						plain
 						dark
@@ -38,10 +54,10 @@ export default {
 	data() {
 		return {
 			menu: [
-				{ icon: 'HOME', title: 'HOME' },
-				{ icon: 'BLOG', title: 'BLOG' },
-				{ icon: 'IAM', title: 'IAM' },
-				{ icon: 'ADMIN', title: 'ADMIN' },
+				{ icon: 'HOME', title: 'HOME', to: '' },
+				{ icon: 'BLOG', title: 'BLOG', to: '' },
+				{ icon: 'IAM', title: 'IAM', to: '' },
+				{ icon: 'ADMIN', title: 'ADMIN', to: '' },
 			],
 		};
 	},
