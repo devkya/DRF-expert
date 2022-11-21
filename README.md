@@ -4,4 +4,5 @@
 3. Multi page & Router
 
 ## 해결해야 되는 것
-1. v-menu width 더 크게
+1. `v-menu` width 더 크게 -> `v-navigation-bar` 로 해결
+2. hash & ancher -> scroll 이동

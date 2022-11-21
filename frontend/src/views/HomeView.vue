@@ -1,12 +1,14 @@
 <template>
 	<div>
-		<Hello-World></Hello-World>
+		<Home-Img></Home-Img>>
+		<Home-Post-List></Home-Post-List>
 	</div>
 </template>
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import HomeImg from '@/components/home/HomeImg.vue';
+import HomePostList from '@/components/home/HomePostList.vue';
 export default {
-	components: { HelloWorld },
+	components: { HomeImg, HomePostList },
 	data() {
 		return {};
 	},

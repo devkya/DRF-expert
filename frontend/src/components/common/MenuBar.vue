@@ -17,7 +17,7 @@
 			</v-app-bar-nav-icon>
 
 			<!-- display lg up -->
-			<v-slide-group class="hidden-lg-and-down">
+			<v-slide-group class="hidden-md-and-down">
 				<v-slide-item
 					v-for="(item, index) in menu"
 					:key="index"
@@ -28,7 +28,10 @@
 						class="elevation-0 px-5"
 						:input-value="active"
 						:style="active ? 'color: #fbbd28' : undefined"
-						@click="toggle"
+						@click="
+							toggle();
+							$emit('moveTo', item.to);
+						"
 						plain
 						dark
 						>{{ item.title }}</v-btn
@@ -41,6 +44,7 @@
 			v-model="drawer"
 			clipped
 			right
+			temporary
 			:style="{ top: $vuetify.application.top + 'px', zIndex: 4 }"
 			app
 		>
@@ -71,10 +75,10 @@ export default {
 		return {
 			drawer: false,
 			menu: [
-				{ icon: 'mdi-home', title: 'HOME', to: '' },
-				{ icon: 'mdi-web', title: 'BLOG', to: '' },
-				{ icon: 'mdi-account-circle', title: 'IAM', to: '' },
-				{ icon: 'mdi-check', title: 'ADMIN', to: '' },
+				{ icon: 'mdi-home', title: 'HOME', to: 'home' },
+				{ icon: 'mdi-web', title: 'BLOG', to: 'blog' },
+				{ icon: 'mdi-account-circle', title: 'IAM', to: 'iam' },
+				{ icon: 'mdi-check', title: 'ADMIN', to: 'admin' },
 			],
 		};
 	},

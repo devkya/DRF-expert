@@ -1,6 +1,6 @@
 <template>
 	<v-app>
-		<MenuBar></MenuBar>>
+		<MenuBar @move-to="test(menu)"></MenuBar>>
 		<v-main>
 			<router-view />
 		</v-main>
@@ -15,5 +15,10 @@ export default {
 	data: () => ({
 		//
 	}),
+	methods: {
+		test(menu) {
+			console.log('test()...', menu);
+		},
+	},
 };
 </script>

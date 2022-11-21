@@ -1,6 +1,8 @@
 <template>
 	<v-container>
-		<v-card height="1500px"></v-card>
+		<v-card height="600px">
+			<v-card-title>Home Post List</v-card-title>
+		</v-card>
 	</v-container>
 </template>
 <script>
