@@ -1,8 +1,8 @@
 <template>
 	<v-app>
-		<MenuBar @move-to="test(menu)"></MenuBar>>
+		<MenuBar @menuChg="scrollTo"></MenuBar>
 		<v-main>
-			<router-view />
+			<router-view ref="ContentComponent" :menu="menu" />
 		</v-main>
 	</v-app>
 </template>
@@ -13,11 +13,12 @@ export default {
 	name: 'Home',
 	components: { MenuBar },
 	data: () => ({
+		menu: '',
 		//
 	}),
 	methods: {
-		test(menu) {
-			console.log('test()...', menu);
+		scrollTo(menu) {
+			this.$refs.ContentComponent.scrollTo(menu);
 		},
 	},
 };

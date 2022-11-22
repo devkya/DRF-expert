@@ -27,15 +27,17 @@
 						id="menu-btn"
 						class="elevation-0 px-5"
 						:input-value="active"
+						v-model="menu"
 						:style="active ? 'color: #fbbd28' : undefined"
 						@click="
 							toggle();
-							$emit('moveTo', item.to);
+							$emit('menuChg', item.to);
 						"
 						plain
 						dark
-						>{{ item.title }}</v-btn
 					>
+						{{ item.title }}
+					</v-btn>
 				</v-slide-item>
 			</v-slide-group>
 		</v-app-bar>
@@ -54,6 +56,7 @@
 					v-for="(item, index) in menu"
 					:key="index"
 					link
+					@click="$emit('menuChg', item.to)"
 				>
 					<v-list-item-icon>
 						<v-icon>{{ item.icon }}</v-icon>
@@ -76,9 +79,8 @@ export default {
 			drawer: false,
 			menu: [
 				{ icon: 'mdi-home', title: 'HOME', to: 'home' },
-				{ icon: 'mdi-web', title: 'BLOG', to: 'blog' },
+				{ icon: 'mdi-web', title: 'BLOG', to: 'posts' },
 				{ icon: 'mdi-account-circle', title: 'IAM', to: 'iam' },
-				{ icon: 'mdi-check', title: 'ADMIN', to: 'admin' },
 			],
 		};
 	},
