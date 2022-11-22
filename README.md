@@ -7,3 +7,4 @@
 1. `v-menu` width 더 크게 -> `v-navigation-bar` 로 해결
 2. hash & ancher -> scroll 이동
 3. `app-bar` 에서 메뉴를 클릭하면 `router-view`로 데이터가 전달되고, `HomeView.vue`에서 이벤트가 실행되어야 함
+4. pagination 기능 추가
