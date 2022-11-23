@@ -4,14 +4,16 @@
 		<v-main>
 			<router-view ref="ContentComponent" :menu="menu" />
 		</v-main>
+		<Footer></Footer>
 	</v-app>
 </template>
 
 <script>
 import MenuBar from '@/components/common/MenuBar.vue';
+import Footer from '@/components/common/Footer.vue';
 export default {
 	name: 'Home',
-	components: { MenuBar },
+	components: { MenuBar, Footer },
 	data: () => ({
 		menu: '',
 		//
