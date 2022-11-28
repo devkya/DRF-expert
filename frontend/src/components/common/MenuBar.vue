@@ -1,10 +1,15 @@
 <template>
 	<div>
 		<v-app-bar color="#494949" clipped-right app>
-			<v-icon class="px-5" dark large>mdi-basketball</v-icon>
-			<v-toolbar-title class="font-weight-bold text-h5" style="color: #fbbd28">
-				VUE - DJANGO WEB
-			</v-toolbar-title>
+			<v-btn to="/home" style="background-color: transparent !important" plain>
+				<v-icon class="pr-3" dark large>mdi-basketball</v-icon>
+				<v-toolbar-title
+					class="font-weight-bold text-h5"
+					style="color: #fbbd28"
+				>
+					VUE - DJANGO WEB
+				</v-toolbar-title>
+			</v-btn>
 			<v-spacer></v-spacer>
 			<!-- display breakpoint -->
 			<!-- display lg down -->
@@ -92,7 +97,7 @@ export default {
 };
 </script>
 <style scoped>
-#menu-btn::before {
+#menu-btn ::before {
 	background-color: transparent !important;
 }
 </style>
