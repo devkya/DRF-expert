@@ -46,3 +46,11 @@
 3. response
 >listAPIView => `many=True` instance를 여러개 serialize 함
 >RetrieveAPIView => `many=False` instance를 한 개만 serialize 함
+
+## Django Shell에서 자동완성 사용하기
+```python
+import os, django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'backend.settings')
+django.setup()
+```

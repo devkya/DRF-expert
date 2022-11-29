@@ -2,13 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from blog.models import Post, Comment
 
-
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-        
         
 class PostListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,4 +21,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
         
-        
+class PostLikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['like']
