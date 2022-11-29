@@ -13,7 +13,7 @@
 ## APIView, Mixins, Generics API View, ViewSet  
 > [참고링크](https://velog.io/@duo22088/DRF-APIView-Mixins-generics-APIView-ViewSet-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)  
 >`APIView` < `Mixins` < `generics APIView` < `ViewSet`
-* `APIView`
+### `APIView`
     * 하나의 CBV 이므로 하나의 URL 만 처리 가능
     * 각 요청 method(get, post, put, delete)에 맞게 멤버함수를 구현하면, 해당 method 요청이 들어올 때 호출됨
     * 호출이 되면 호출 이전 단계(initial)에서 다음을 처리함
@@ -23,15 +23,19 @@
         4. 권한 클래스 지정 : 비인증 / 인증 유저에 대한 API 호출
         5. 요청한 버전 체크 : request.version에 저장
 
-* `Mixins`
+### `Mixins`
     * `APIView` 구현에서 각 request method 마다 직접 직렬화 처리를 반복함 => `Mixins`를 사용하여 간소화 가능
     *  `queryset`과 `serializer_class`를 지정해주고 상속받은 `Mixins`와 연결해주면 됨
     * request method 와 연결되는 부분은 Customizing 해야 함
 
-* `generics APIView`
+### `generics APIView`
     * 하나 이상의 `Mixins`와 결합된 클래스 제공
 
-* `ViewSet`
+    1. `UpdateAPIView`
+        > PUT(리소스 전체 수정) vs PATCH(리소스 부분 수정)
+
+
+### `ViewSet`
     * 하나의 핼퍼클래스로 두 개 이상의 URL 처리 가능
 
 
