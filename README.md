@@ -9,6 +9,8 @@
 3. `app-bar` 에서 메뉴를 클릭하면 `router-view`로 데이터가 전달되고, `HomeView.vue`에서 이벤트가 실행되어야 함
 4. pagination 기능 추가 => drf 기능으로 해결되는 것 같음 => 강의 들으면서 해결
 
+*** 
+
 # DRF
 ## APIView, Mixins, Generics API View, ViewSet  
 > [참고링크](https://velog.io/@duo22088/DRF-APIView-Mixins-generics-APIView-ViewSet-%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)  
@@ -47,7 +49,54 @@
 >listAPIView => `many=True` instance를 여러개 serialize 함
 >RetrieveAPIView => `many=False` instance를 한 개만 serialize 함
 
-## Django Shell에서 자동완성 사용하기
+## Serializer
+### Serialize
+* 순서
+    1. instance
+    2. Serializer(instance= )
+    3. dict
+    4. json data
+    5. response
+
+* GET
+
+* 다음 코드로 이해 가능
+```python
+from .models import Comment
+from .serializers import CommentSerializer
+from rest_framework.response import Response
+
+
+instance = Comment.objects.all()[0] # instance
+queryset = Comment.objects.all() # queryset : instance 집합
+
+serializers = CommentSerializer(instance=queryset, many=True)
+serializer = CommentSerializer(instance=instance, many=False) # default
+
+print(type(serializer.data)) # <class 'rest_framework.utils.serializer_helpers.ReturnList'>
+print(type(serializers.data)) # <class 'rest_framework.utils.serializer_helpers.ReturnList'>
+# 
+# Response : status_code = 200
+Response(serializer.data)
+Response(serializers.data)
+
+
+```
+### Deserialize
+* 순서
+    1. json data
+    2. dict
+    3. Serializer(data= )
+    4. is_valid(), validated_data
+    5. instance 생성
+    6. save()
+
+* POST, UPDATE, DELETE, PATCH
+
+
+***
+
+# Django Shell에서 자동완성 사용하기
 ```python
 import os, django
 

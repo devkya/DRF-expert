@@ -1,9 +1,8 @@
-from django.contrib.auth.models import User
-from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView
-from .serializers import  PostListSerializer, CommentSerializer, PostRetrieveSerializer, PostLikeSerializer
-from blog.models import Post, Comment
+from rest_framework.views import APIView
+from .serializers import  PostListSerializer, CommentSerializer, PostRetrieveSerializer, PostLikeSerializer, CateTagSerializer
+from blog.models import Post, Comment, Tag, Category
 
 
 # ViewSets define the view behavior.
@@ -42,3 +41,15 @@ class PostLikeAPIView(UpdateAPIView):
 
         # return Response(serializer.data)
         return Response(data['like'])
+    
+    
+class CateTagAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        cateList = Category.objects.all()
+        tagList = Tag.objects.all()
+        data = {
+            'cateList' : cateList,
+            'tagList' : tagList
+        }
+        serializer = CateTagSerializer(instance=data)
+        return Response(serializer.data)
