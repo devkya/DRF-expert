@@ -97,9 +97,16 @@ Response(serializers.data)
 ***
 
 # Django Shell에서 자동완성 사용하기
+### 방법1
 ```python
 import os, django
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'backend.settings')
 django.setup()
 ```
+
+### 방법2
+1. `pipenv install django-extensions --dev`
+2. `settings.py` -> `django_extensions` app 추가
+3. cmd -> `python manage.py shell_plus` 
+>model 자동 import 됨
